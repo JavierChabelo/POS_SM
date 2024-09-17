@@ -30,7 +30,6 @@ Pequeño punto de venta con Laravel 7.
 ## Descargar app
 He creado una app que consume la API de este sistema. 
 - Usuarios de Android: https://github.com/parzibyte/sistema_ventas_laravel/raw/master/PuntoDeVenta1.0.apk
-- Usuarios de iOS: Conseguir un dispositivo con Android y descargar la versión para Android
   
 
 ## Créditos de las imágenes
