@@ -1,7 +1,5 @@
 <?php
 return [
-    //TODO: terminar validaciones
-    // Tomado de: https://parzibyte.me/blog/2019/06/20/laravel-mensajes-validacion-espanol/
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines

@@ -6,10 +6,7 @@
         <div class="col-12">
             <h1>Acerca de</h1>
             <p>
-                Programado por <a href="//parzibyte.me/blog">Luis Cabrera Benito</a>. Mira mis
-                <a href="https://parzibyte.me/blog/software-creado-por-parzibyte/">otros proyectos</a>.
-                <br>
-                Código fuente en <a href="//github.com/parzibyte/sistema_ventas_laravel">GitHub</a>
+                Programado por Javier y David</a>
             </p>
             <pre>
                 <code>
