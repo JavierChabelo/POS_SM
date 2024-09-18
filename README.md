@@ -1,6 +1,4 @@
-## POS con Laravel open source
-Pequeño punto de venta con Laravel 7.
-![Bienvenida al sistema de ventas escrito en Laravel](https://parzibyte.me/blog/wp-content/uploads/2020/03/Inicio-Punto-de-venta-con-Laravel-usuarios-y-clientes.png)
+## Punto de venta S&M
 
 ## Características
 
@@ -15,26 +13,15 @@ Pequeño punto de venta con Laravel 7.
 -   Impresión de tickets de venta en impresora térmica
 -   Reporte de ventas
 -   Inicio de sesión y registro de usuarios
--   App para Android
 
-## Tutorial
+## Bibliografias
 
-[Ver tutorial en mi blog](https://parzibyte.me/blog/2020/03/06/sistema-ventas-laravel-bootstrap-mysql-open-source/)
+[Parte 1: ventas y productos](https://parzibyte.me/blog/2020/03/06/sistema-ventas-laravel-bootstrap-mysql-open-source/)
 
-[Parte 2 con clientes y usuarios](https://parzibyte.me/blog/2020/03/10/laravel-pos-clientes-usuarios/)
+[Parte 2: clientes y usuarios](https://parzibyte.me/blog/2020/03/10/laravel-pos-clientes-usuarios/)
 
-![Ticket de venta](https://parzibyte.me/blog/wp-content/uploads/2020/03/Ticket-de-venta-impreso-desde-PDV-con-Laravel.jpg)
-
-**By Parzibyte**
-
-## Descargar app
-He creado una app que consume la API de este sistema. 
-- Usuarios de Android: https://github.com/parzibyte/sistema_ventas_laravel/raw/master/PuntoDeVenta1.0.apk
-  
 
 ## Créditos de las imágenes
-
-  
 
 **Productos:** Icons made by [Icongeek26](https://www.flaticon.com/authors/icongeek26  "Icongeek26") from [www.flaticon.com](https://www.flaticon.com/  "Flaticon")
 
