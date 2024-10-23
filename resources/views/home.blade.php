@@ -6,7 +6,8 @@
         <h1>Bienvenido, {{Auth::user()->name}}</h1>
     </div>
     @foreach([
-    ["productos", "usuarios"]
+    ["productos", "ventas", "vender", "clientes"],
+    ["usuarios", "acerca_de", "soporte"]
     ] as $modulos)
         <div class="col-9 pb-2">
             <div class="row">
@@ -19,7 +20,7 @@
                                     {{$modulo === "acerca_de" ? "Acerca de" : ucwords($modulo)}}
                                 </h5>
                                 <a href="{{route("$modulo.index")}}" class="btn btn-success">
-                                    Ir a&nbsp;{{$modulo === "Productos" ? "Productos" : ucwords($modulo)}}
+                                    Ir a&nbsp;{{$modulo === "acerca_de" ? "Acerca de" : ucwords($modulo)}}
                                     <i class="fa fa-arrow-right"></i>
                                 </a>
                             </div>
