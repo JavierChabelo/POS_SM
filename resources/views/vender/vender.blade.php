@@ -80,7 +80,7 @@
             @else
                 <h2>Aquí aparecerán los productos de la venta
                     <br>
-                    Escanea el código de barras o escribe y presiona Enter</h2>
+                    Escribe el código de barras y presiona Enter</h2>
             @endif
         </div>
     </div>
