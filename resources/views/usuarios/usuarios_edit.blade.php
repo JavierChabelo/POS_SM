@@ -1,4 +1,3 @@
-
 @extends("maestra")
 @section("titulo", "Editar usuario")
 @section("contenido")
@@ -24,7 +23,6 @@
                            class="form-control"
                            type="password" placeholder="Contraseña">
                 </div>
-
                 @include("notificacion")
                 <button class="btn btn-success">Guardar</button>
                 <a class="btn btn-primary" href="{{route("usuarios.index")}}">Volver</a>
