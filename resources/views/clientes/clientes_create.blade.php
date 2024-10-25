@@ -1,4 +1,3 @@
-
 @extends("maestra")
 @section("titulo", "Agregar cliente")
 @section("contenido")
@@ -15,9 +14,8 @@
                 <div class="form-group">
                     <label class="label">Teléfono</label>
                     <input required autocomplete="off" name="telefono" class="form-control"
-                           type="text" placeholder="Teléfono">
+                           type="text" placeholder="Teléfono" pattern="\d{10}" maxlength="10" minlength="10" title="Debe ingresar un número de 10 dígitos">
                 </div>
-
                 @include("notificacion")
                 <button class="btn btn-success">Guardar</button>
                 <a class="btn btn-primary" href="{{route("clientes.index")}}">Volver al listado</a>
