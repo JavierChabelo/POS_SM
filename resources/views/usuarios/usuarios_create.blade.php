@@ -1,4 +1,3 @@
-
 @extends("maestra")
 @section("titulo", "Agregar usuario")
 @section("contenido")
