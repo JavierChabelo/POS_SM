@@ -1,4 +1,3 @@
-
 @extends("maestra")
 @section("titulo", "Realizar venta")
 @section("contenido")
@@ -34,11 +33,14 @@
                     <form action="{{route("agregarProductoVenta")}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="codigo">Código de barras</label>
-                            <input id="codigo" autocomplete="off" required autofocus name="codigo" type="text"
-                                   class="form-control"
-                                   placeholder="Código de barras">
+                            <label for="id_producto">Producto</label>
+                            <select required class="form-control" name="id_producto" id="id_producto">
+                                @foreach($productos as $producto)
+                                    <option value="{{$producto->id}}">{{$producto->descripcion}} - ${{number_format($producto->precio_venta, 2)}}</option>
+                                @endforeach
+                            </select>
                         </div>
+                        <button type="submit" class="btn btn-primary">Agregar Producto</button>
                     </form>
                 </div>
             </div>
@@ -80,7 +82,7 @@
             @else
                 <h2>Aquí aparecerán los productos de la venta
                     <br>
-                    Escribe el código de barras y presiona Enter</h2>
+                    Selecciona un producto y presiona "Agregar Producto"</h2>
             @endif
         </div>
     </div>
