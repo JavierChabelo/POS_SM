@@ -1,4 +1,3 @@
-
 @extends("maestra")
 @section("titulo", "Productos")
 @section("contenido")
@@ -17,7 +16,6 @@
                         <th>Precio de venta</th>
                         <th>Utilidad</th>
                         <th>Existencia</th>
-
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>

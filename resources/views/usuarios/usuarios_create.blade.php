@@ -1,4 +1,3 @@
-
 @extends("maestra")
 @section("titulo", "Agregar usuario")
 @section("contenido")
@@ -22,7 +21,6 @@
                     <input required autocomplete="off" name="password" class="form-control"
                            type="password" placeholder="Contraseña">
                 </div>
-
                 @include("notificacion")
                 <button class="btn btn-success">Guardar</button>
                 <a class="btn btn-primary" href="{{route("usuarios.index")}}">Volver al listado</a>
