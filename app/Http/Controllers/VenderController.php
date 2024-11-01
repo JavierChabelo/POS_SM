@@ -159,6 +159,7 @@ class VenderController extends Controller
             [
                 "total" => $total,
                 "clientes" => Cliente::all(),
+                "productos" => Producto::all()
             ]);
     }
 }

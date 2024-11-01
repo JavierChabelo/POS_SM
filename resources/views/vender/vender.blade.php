@@ -33,14 +33,17 @@
                     <form action="{{route("agregarProductoVenta")}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="id_producto">Producto</label>
-                            <select required class="form-control" name="id_producto" id="id_producto">
+                            <label for="codigo">Producto</label>
+                            <select id="codigo" required name="codigo" class="form-control">
+                                <option value="" disabled selected>Seleccione un producto</option>
                                 @foreach($productos as $producto)
-                                    <option value="{{$producto->id}}">{{$producto->descripcion}} - ${{number_format($producto->precio_venta, 2)}}</option>
+                                    <option value="{{$producto->codigo_barras}}">
+                                        {{$producto->descripcion}} - ${{number_format($producto->precio_venta, 2)}}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                        <button type="submit" class="btn btn-primary">Agregar producto</button>
                     </form>
                 </div>
             </div>
@@ -82,7 +85,7 @@
             @else
                 <h2>Aquí aparecerán los productos de la venta
                     <br>
-                    Selecciona un producto y presiona "Agregar Producto"</h2>
+                    Seleccione un producto de la lista</h2>
             @endif
         </div>
     </div>
