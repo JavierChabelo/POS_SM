@@ -28,7 +28,7 @@
                             <td>{{$producto->precio_compra}}</td>
                             <td>{{$producto->precio_venta}}</td>
                             <td>{{$producto->precio_venta - $producto->precio_compra}}</td>
-                            <td>{{$producto->existencia}}</td>
+                            <td>{{ intval($producto->existencia) }}</td>
                             <td>
                                 <a class="btn btn-warning" href="{{route("productos.edit",[$producto])}}">
                                     <i class="fa fa-edit"></i>

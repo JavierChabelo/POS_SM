@@ -94,42 +94,49 @@ class VenderController extends Controller
 
     public function agregarProductoVenta(Request $request)
     {
-        $codigo = $request->post("codigo");
-        $producto = Producto::where("codigo_barras", "=", $codigo)->first();
-        if (!$producto) {
-            return redirect()
-                ->route("vender.index")
-                ->with("mensaje", "Producto no encontrado");
-        }
-        $this->agregarProductoACarrito($producto);
-        return redirect()
-            ->route("vender.index");
-    }
+        // Validar que se ha seleccionado un producto
+        $request->validate([
+            'codigo' => 'required|exists:productos,codigo_barras',
+            'cantidad' => 'required|integer|min:1'
+        ]);
 
-    private function agregarProductoACarrito($producto)
-    {
-        if ($producto->existencia <= 0) {
+        $codigo = $request->input("codigo");
+        $cantidad = $request->input("cantidad");
+        $producto = Producto::where("codigo_barras", "=", $codigo)->first();
+
+        // Verificar si hay suficiente existencia del producto
+        if ($cantidad > $producto->existencia) {
             return redirect()->route("vender.index")
                 ->with([
-                    "mensaje" => "No hay existencias del producto",
+                    "mensaje" => "No se pueden agregar más productos de este tipo, no hay suficiente existencia",
                     "tipo" => "danger"
                 ]);
         }
+
+        // Agregar el producto al carrito
+        $this->agregarProductoACarrito($producto, $cantidad);
+        return redirect()->route("vender.index");
+    }
+
+    private function agregarProductoACarrito($producto, $cantidad)
+    {
         $productos = $this->obtenerProductos();
         $posibleIndice = $this->buscarIndiceDeProducto($producto->codigo_barras, $productos);
-        // Es decir, producto no fue encontrado
+
+        // Si el producto no fue encontrado en el carrito
         if ($posibleIndice === -1) {
-            $producto->cantidad = 1;
+            $producto->cantidad = $cantidad; // Asignar la cantidad ingresada
             array_push($productos, $producto);
         } else {
-            if ($productos[$posibleIndice]->cantidad + 1 > $producto->existencia) {
+            // Si el producto ya está en el carrito, aumentar la cantidad
+            if ($productos[$posibleIndice]->cantidad + $cantidad > $producto->existencia) {
                 return redirect()->route("vender.index")
                     ->with([
                         "mensaje" => "No se pueden agregar más productos de este tipo, se quedarían sin existencia",
                         "tipo" => "danger"
                     ]);
             }
-            $productos[$posibleIndice]->cantidad++;
+            $productos[$posibleIndice]->cantidad += $cantidad; // Aumentar la cantidad existente
         }
         $this->guardarProductos($productos);
     }
