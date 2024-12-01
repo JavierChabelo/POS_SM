@@ -1,4 +1,3 @@
-
 @extends("maestra")
 @section("titulo", "Agregar producto")
 @section("contenido")
@@ -32,7 +31,6 @@
                     <input required autocomplete="off" name="existencia" class="form-control"
                            type="decimal(9,2)" placeholder="Existencia">
                 </div>
-
                 @include("notificacion")
                 <button class="btn btn-success">Guardar</button>
                 <a class="btn btn-primary" href="{{route("productos.index")}}">Volver al listado</a>
