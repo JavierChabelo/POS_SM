@@ -15,10 +15,17 @@
             /*Para la barra inferior fija*/
             padding-bottom: 70px;
         }
+        .bg-custom-green {
+            background: #208b3a;
+        }
+        /*Modificación del color de la barra inferior*/
+        .navbar {
+            border: 1px solid #208b3a !important;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-custom-green fixed-top">
     <a class="navbar-brand" target="_self" href="{{route("home")}}">Inicio&nbsp;<i class="fa fa-home"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             id="botonMenu" aria-label="Mostrar u ocultar menú">

@@ -7,46 +7,33 @@ namespace App\Http\Controllers;
 use App\Venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
-use Mike42\Escpos\Printer;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\View;
 
 class VentasController extends Controller
 {
 
     public function ticket(Request $request)
     {
-        $venta = Venta::findOrFail($request->get("id"));
-        $nombreImpresora = env("NOMBRE_IMPRESORA");
-        $connector = new WindowsPrintConnector($nombreImpresora);
-        $impresora = new Printer($connector);
-        $impresora->setJustification(Printer::JUSTIFY_CENTER);
-        $impresora->setEmphasis(true);
-        $impresora->text("Ticket de venta\n");
-        $impresora->text($venta->created_at . "\n");
-        $impresora->setEmphasis(false);
-        $impresora->text("Cliente: ");
-        $impresora->text($venta->cliente->nombre . "\n");
-        $impresora->text("\n===============================\n");
+        // Obtener la venta
+        $venta = Venta::with('cliente', 'productos')->findOrFail($request->get("id"));
+        
+        // Calcular el total
         $total = 0;
         foreach ($venta->productos as $producto) {
-            $subtotal = $producto->cantidad * $producto->precio;
-            $total += $subtotal;
-            $impresora->setJustification(Printer::JUSTIFY_LEFT);
-            $impresora->text(sprintf("%.2fx%s\n", $producto->cantidad, $producto->descripcion));
-            $impresora->setJustification(Printer::JUSTIFY_RIGHT);
-            $impresora->text('$' . number_format($subtotal, 2) . "\n");
+            $total += $producto->cantidad * $producto->precio;
         }
-        $impresora->setJustification(Printer::JUSTIFY_CENTER);
-        $impresora->text("\n===============================\n");
-        $impresora->setJustification(Printer::JUSTIFY_RIGHT);
-        $impresora->setEmphasis(true);
-        $impresora->text("Total: $" . number_format($total, 2) . "\n");
-        $impresora->setJustification(Printer::JUSTIFY_CENTER);
-        $impresora->setTextSize(1, 1);
-        $impresora->text("Gracias por su compra\n");
-        $impresora->feed(5);
-        $impresora->close();
-        return redirect()->back()->with("mensaje", "Ticket impreso");
+    
+        // Generar el PDF
+        $pdf = PDF::loadView('tickets.ticket', [
+            'venta' => $venta,
+            'total' => $total
+        ]);
+    
+        return response($pdf->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="ticket_venta_' . $venta->id . '.pdf"'
+        ]);
     }
 
     /**

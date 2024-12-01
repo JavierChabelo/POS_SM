@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TicketController;
+
 
 Route::get('/', function () {
     return redirect()->route("home");
@@ -35,4 +37,6 @@ Route::middleware("auth")
         Route::post("/productoDeVenta", "VenderController@agregarProductoVenta")->name("agregarProductoVenta");
         Route::delete("/productoDeVenta", "VenderController@quitarProductoDeVenta")->name("quitarProductoDeVenta");
         Route::post("/terminarOCancelarVenta", "VenderController@terminarOCancelarVenta")->name("terminarOCancelarVenta");
-    });
+        Route::post('/tickets', "TicketController@crearTicket")->name('tickets.store');
+    }
+);
