@@ -5,7 +5,7 @@
         <h1>Bienvenido, {{Auth::user()->name}}</h1>
     </div>
     <div class="col-12 pb-2">
-        <div class="row">
+        <div class="row justify-content-center"> <!-- Agregar justify-content-center aquí -->
             @foreach([
             ["productos", "ventas", "vender"], 
             ["usuarios", "clientes"]
