@@ -1,18 +1,17 @@
-
 @extends('maestra')
 @section("titulo", "Inicio")
 @section('contenido')
     <div class="col-12 text-center">
         <h1>Bienvenido, {{Auth::user()->name}}</h1>
     </div>
-    @foreach([
-    ["productos", "ventas", "vender"],
-    ["usuarios", "clientes"]
-    ] as $modulos)
-        <div class="col-9 pb-2">
-            <div class="row">
+    <div class="col-12 pb-2">
+        <div class="row">
+            @foreach([
+            ["productos", "ventas", "vender"], 
+            ["usuarios", "clientes"]
+            ] as $modulos)
                 @foreach($modulos as $modulo)
-                    <div class="col-12 col-md-3">
+                    <div class="col-md-2"> 
                         <div class="card">
                             <img class="card-img-top" src="{{url("/img/$modulo.png")}}">
                             <div class="card-body">
@@ -27,7 +26,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            @endforeach
         </div>
-    @endforeach
+    </div>
 @endsection
