@@ -21,7 +21,7 @@ class VenderController extends Controller
             return $this->cancelarVenta();
         }
     }
-
+    
     public function terminarVenta(Request $request)
     {
         // Crear una venta

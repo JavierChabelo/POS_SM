@@ -1,0 +1,7 @@
+.imagen {
+    width: 300px;   /* Ajusta el ancho de la imagen */
+    height: auto;   /* Mantiene la proporción de la imagen */
+    object-fit: cover;  /* Ajusta la imagen para llenar el contenedor de forma uniforme */
+    border-radius: 5px; /* Opcional: añade esquinas redondeadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Opcional: añade una sombra ligera */
+}

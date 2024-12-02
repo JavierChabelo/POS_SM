@@ -6,7 +6,7 @@
         <h1>Bienvenido, {{Auth::user()->name}}</h1>
     </div>
     @foreach([
-    ["productos","usuarios"]
+    ["productos","usuarios","proveedores","compras"]
     ] as $modulos)
         <div class="col-12 pb-2">
             <div class="row">

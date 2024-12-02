@@ -9,6 +9,7 @@
     <title>@yield("titulo") - {{env("APP_NAME")}}</title>
     <link href="{{url("/css/bootstrap.min.css")}}" rel="stylesheet">
     <link href="{{url("/css/all.min.css")}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <style>
         body {
             padding-top: 70px;

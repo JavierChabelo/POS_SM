@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVentasTable extends Migration
+class AddEstadoToDetalleCompraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateVentasTable extends Migration
      */
     public function up()
     {
-        Schema::create('ventas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('detalle_compra', function (Blueprint $table) {
+            $table->boolean('estado')->default(true);
         });
     }
 
@@ -26,6 +25,8 @@ class CreateVentasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ventas');
+        Schema::table('detalle_compra', function (Blueprint $table) {
+            $table->dropColumn('estado');
+        });
     }
 }
